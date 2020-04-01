@@ -45,11 +45,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-
-                <a class="navbar-brand" href="#">VideoShare/a>
+                <a class="navbar-brand" href="#">VideoShare</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
-
                 <div class="navbar-form navbar-right">
 
                     <button id="user-profile" class="btn btn-default" data-loading-text="Getting info">
@@ -59,7 +57,6 @@
 
                     <button id="auth0-login" class="btn btn-success">Sign in</button>
                     <button id="auth0-logout" class="btn btn-success">Sign Out</button>
-
 
                 </div>
             </div>
@@ -71,11 +68,27 @@
     <div class="jumbotron">
         <div id="hero" class="container">
             <img src="images/popcorn.png" />
+
             <h1>All videos. All the time.</h1>
 
             <p>Guaranteed 100% server free.</p>
         </div>
     </div>
+
+    <!-- Movie template. This is cloned, never shown directly -->
+    <div id="video-template" class="col-sm-4 col">
+        <div class="video-card">
+            <div class="transcoding-indicator">
+                <object type="image/svg+xml" data="images/transcoding-indicator.svg">
+                    Your browser does not support SVG
+                </object>
+            </div>
+            <video width="100%" height="100%">
+                <source type="video/mp4"> Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+    <!-- / movie template -->
 
     <div class="container" id="video-list-container">
         <span id="upload-video-button" class="btn btn-info btn-file">
@@ -89,6 +102,16 @@
                 <span class="sr-only">20% Complete</span>
             </div>
         </div>
+
+        <object id="loading-indicator" type="image/svg+xml" data="images/loading-indicator.svg">
+            Your browser does not support SVG
+        </object>
+
+        <!-- Row of movies -->
+        <div id="video-list" class="row">
+
+        </div>
+
     </div>
     <!-- /container -->
 
@@ -122,8 +145,10 @@
 
     <script src="js/vendor/bootstrap.min.js"></script>
     <script src="https://cdn.auth0.com/js/lock/11.16.0/lock.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.0.4/firebase.js"></script>
 
     <script src="js/user-controller.js"></script>
+    <script src="js/video-controller.js"></script>
     <script src="js/upload-controller.js"></script>
     <script src="js/config.js"></script>
     <script src="js/main.js"></script>

@@ -1,6 +1,6 @@
 {
   "name": "videoshare",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Serverless video sharing website",
   "scripts": {
     "start": "ws --port 8100",
@@ -10,5 +10,6 @@
   "license": "BSD-2-Clause",
   "devDependencies": {
     "local-web-server": "^3.0.3"
-  }
+  },
+  "dependencies": {}
 }

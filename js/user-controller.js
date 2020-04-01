@@ -85,10 +85,9 @@ var userController = {
             localStorage.removeItem('accessToken');
             localStorage.removeItem('idToken');
 
-            that.uiElements.loginButton.show();
-
             that.uiElements.logoutButton.hide();
             that.uiElements.profileButton.hide();
+            that.uiElements.loginButton.show();
             that.uiElements.uploadButton.hide();
         });
 
