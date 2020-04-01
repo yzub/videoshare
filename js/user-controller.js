@@ -8,7 +8,8 @@ var userController = {
         logoutButton: null,
         profileButton: null,
         profileNameLabel: null,
-        profileImage: null
+        profileImage: null,
+        uploadButton: null
     },
     init: function (config) {
         this.uiElements.loginButton = $('#auth0-login');
@@ -16,6 +17,7 @@ var userController = {
         this.uiElements.profileButton = $('#user-profile');
         this.uiElements.profileNameLabel = $('#profilename');
         this.uiElements.profileImage = $('#profilepicture');
+        this.uiElements.uploadButton = $('#upload-video-button');
 
         this.data.config = config;
         var params = {
@@ -38,7 +40,6 @@ var userController = {
         if (accessToken && idToken) {
             this.getUserProfile(accessToken, idToken);
         }
-
     },
     configureAuthenticatedRequests: function () {
         $.ajaxSetup({
@@ -48,7 +49,6 @@ var userController = {
         });
     },
     getUserProfile: function (accessToken, idToken) {
-        // ID token isn't used, we do need to for all future request to the API though.
         var that = this;
         this.data.auth0Lock.getUserInfo(accessToken, function (error, profile) {
 
@@ -65,8 +65,9 @@ var userController = {
         var showAuthenticationElements = !!profile;
 
         if (showAuthenticationElements) {
-            this.uiElements.profileNameLabel.text(profile.nickname || profile.email);
+            this.uiElements.profileNameLabel.text(profile.nickname);
             this.uiElements.profileImage.attr('src', profile.picture);
+            this.uiElements.uploadButton.css('display', 'inline-block');
         }
 
         this.uiElements.loginButton.toggle(!showAuthenticationElements);
@@ -84,9 +85,11 @@ var userController = {
             localStorage.removeItem('accessToken');
             localStorage.removeItem('idToken');
 
+            that.uiElements.loginButton.show();
+
             that.uiElements.logoutButton.hide();
             that.uiElements.profileButton.hide();
-            that.uiElements.loginButton.show();
+            that.uiElements.uploadButton.hide();
         });
 
         this.data.auth0Lock.on('authenticated', function (authResult) {
