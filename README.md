@@ -10,6 +10,6 @@ Building a completely serverless video sharing website, complete with:
 
 ## Built With
 
-* [AWS - Lamdba / S3 / API Gateway](aws.amazon.com)
+* [AWS](aws.amazon.com) - Lamdba / S3 / API Gateway
 * [Auth0](https://auth0.com/) - User authentication 
 * [Firebase](https://rometools.github.io/rome/) - Realtime Database
