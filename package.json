@@ -1,6 +1,6 @@
 {
   "name": "videoshare",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Serverless video sharing website",
   "scripts": {
     "start": "ws --port 8100",
